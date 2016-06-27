@@ -221,7 +221,10 @@ brooklyn.catalog:
       brooklyn.config:
         docker.discovery.tlsoptions:
           $brooklyn:formatString:
-          - "--cluster-store-opt \"kv.cacertfile=%1$s/.certs/ca.pem\"  --cluster-store-opt \"kv.certfile=%1$s/.certs/cert.pem\"  --cluster-store-opt \"kv.keyfile=%1$s/.certs/key.pem\""
+          - >-
+            --cluster-store-opt "kv.cacertfile=%1$s/.certs/ca.pem"
+            --cluster-store-opt "kv.certfile=%1$s/.certs/cert.pem"
+            --cluster-store-opt "kv.keyfile=%1$s/.certs/key.pem"
           - $brooklyn:attributeWhenReady("install.dir")
         docker.additionaloptions:
           $brooklyn:formatString:
