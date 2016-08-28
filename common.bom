@@ -6,8 +6,26 @@ brooklyn.catalog:
     license_code: CLOUDSOFT-1.0
 
   items:
+    - id: conditional-entity
+      name: "Conditional Entity"
+      description: |
+        An entity that creates a child only if a configuration key is set
+      itemType: entity
+      item:
+        type: org.apache.brooklyn.entity.stock.ConditionalEntity
+        id: conditional-entity
+
+    - id: child-software-process
+      name: "Child Software Process"
+      description: |
+        A child entity that executes commands to run a process
+      itemType: entity
+      item:
+        type: org.apache.brooklyn.entity.software.base.VanillaSoftwareProcess
+        id: child-software-process
+
     - id: centos-software-process
-      name: "Software Process"
+      name: "CentOS Software Process"
       description: |
         An entity that executes commands to run a process
 

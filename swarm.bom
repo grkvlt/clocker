@@ -367,51 +367,13 @@ brooklyn.catalog:
                 id: swarm-node
                 name: "swarm-node"
 
-  - id: docker-engine-with-discovery
-    name: Docker Engine with TLS and discovery
-    description: |
-      A docker-engine customised with TLS and Discovery endpoint
-    itemType: entity
-    item:
-      type: docker-engine-tls
-
-      brooklyn.parameters:
-        - name: docker.discovery.url
-          label: Docker Discovery URL
-          description: |
-            URL of a KV store for Docker discovery
-          type: string
-
-      brooklyn.config:
-        docker.discovery.tlsoptions:
-          $brooklyn:formatString:
-            - >-
-              --cluster-store-opt "kv.cacertfile=%1$s/.certs/ca.pem"
-              --cluster-store-opt "kv.certfile=%1$s/.certs/cert.pem"
-              --cluster-store-opt "kv.keyfile=%1$s/.certs/key.pem"
-            - $brooklyn:attributeWhenReady("install.dir")
-        docker.discovery.advertise:
-          $brooklyn:formatString:
-            - >-
-              --cluster-advertise %s
-              --cluster-store %s
-            - $brooklyn:attributeWhenReady("docker.endpoint")
-            - $brooklyn:config("docker.discovery.url")
-        docker.additionaloptions.docker-engine-with-discovery:
-          $brooklyn:formatString:
-            - "%s %s %s"
-            - $brooklyn:config("docker.additionaloptions.docker-engine-tls")
-            - $brooklyn:config("docker.discovery.tlsoptions")
-            - $brooklyn:config("docker.discovery.advertise")
-        docker.additionaloptions: $brooklyn:config("docker.additionaloptions.docker-engine-with-discovery")
-
   - id: docker-engine-with-resilience
     name: Docker Engine with Resilience
     description: |
       A docker-engine configured with resilience policies
     itemType: entity
     item:
-      type: docker-engine-with-discovery
+      type: docker-engine-with-tls
 
       brooklyn.parameters:
         - name: swarm.recovery.stabilizationDelay
@@ -444,13 +406,51 @@ brooklyn.catalog:
             entityRecovered.stabilizationDelay:
               $brooklyn:config("swarm.recovery.stabilizationDelay")
 
+  - id: docker-engine-with-discovery
+    name: Docker Engine with TLS and discovery
+    description: |
+      A docker-engine customised with TLS and Discovery endpoint
+    itemType: entity
+    item:
+      type: docker-engine-with-resilience
+
+      brooklyn.parameters:
+        - name: docker.discovery.url
+          label: Docker Discovery URL
+          description: |
+            URL of a KV store for Docker discovery
+          type: string
+
+      brooklyn.config:
+        docker.discovery.tlsoptions:
+          $brooklyn:formatString:
+            - >-
+              --cluster-store-opt "kv.cacertfile=%1$s/.certs/ca.pem"
+              --cluster-store-opt "kv.certfile=%1$s/.certs/cert.pem"
+              --cluster-store-opt "kv.keyfile=%1$s/.certs/key.pem"
+            - $brooklyn:attributeWhenReady("install.dir")
+        docker.discovery.advertise:
+          $brooklyn:formatString:
+            - >-
+              --cluster-advertise %s
+              --cluster-store %s
+            - $brooklyn:attributeWhenReady("docker.endpoint")
+            - $brooklyn:config("docker.discovery.url")
+        docker.additionaloptions.docker-engine-with-discovery:
+          $brooklyn:formatString:
+            - "%s %s %s"
+            - $brooklyn:config("docker.additionaloptions.docker-engine-tls")
+            - $brooklyn:config("docker.discovery.tlsoptions")
+            - $brooklyn:config("docker.discovery.advertise")
+        docker.additionaloptions: $brooklyn:config("docker.additionaloptions.docker-engine-with-discovery")
+
   - id: docker-swarm-node
     name: "Docker Swarm Node"
     description:  |
       A Docker Swarm member node
     itemType: entity
     item:
-      type: docker-engine-with-resilience
+      type: docker-engine-with-discovery
 
       brooklyn.parameters:
         - name: swarm.defaultnetwork
