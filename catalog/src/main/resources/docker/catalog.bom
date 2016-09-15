@@ -4,3 +4,5 @@ brooklyn.catalog:
     - classpath://io.cloudsoft.amp.containerservice.docker-catalog:docker/ca.bom
     - classpath://io.cloudsoft.amp.containerservice.docker-catalog:docker/docker.bom
     - classpath://io.cloudsoft.amp.containerservice.docker-catalog:docker/swarm.bom
+    - classpath://io.cloudsoft.amp.containerservice.docker-catalog:docker/plugins.bom
+    - classpath://io.cloudsoft.amp.containerservice.docker-catalog:docker/kubernetes.bom
