@@ -7,11 +7,13 @@ brooklyn.catalog:
 
   items:
   - https://raw.githubusercontent.com/brooklyncentral/brooklyn-dns/master/brooklyn-dns-etc-hosts-generator.bom
+
   - id: kubernetes-cluster-template
     name: "Kubernetes Cluster"
     description: |
       Kubernetes cluster with a master node and worker nodes
-    iconUrl: https://pbs.twimg.com/media/Bt_pEfqCAAAiVyz.png
+    iconUrl: classpath://io.brooklyn.clocker.kubernetes:icons/kubernetes.png
+
     itemType: template
     item:
       services:
@@ -23,7 +25,7 @@ brooklyn.catalog:
     name: "Kubernetes Cluster"
     description: |
       Kubernetes cluster with a master node and worker nodes
-    iconUrl: https://pbs.twimg.com/media/Bt_pEfqCAAAiVyz.png
+    iconUrl: classpath://io.brooklyn.clocker.kubernetes:icons/kubernetes.png
     itemType: entity
     version: "2.1.0-SNAPSHOT" # CLOCKER_VERSION
     publish:      
@@ -442,7 +444,7 @@ brooklyn.catalog:
     description: |
       Kubernetes worker node
     itemType: entity
-    iconUrl: https://pbs.twimg.com/media/Bt_pEfqCAAAiVyz.png
+    iconUrl: classpath://io.brooklyn.clocker.kubernetes:icons/kubernetes.png
     item:
       type: centos-software-process
 
@@ -683,7 +685,7 @@ brooklyn.catalog:
     description: |
       Kubernetes master node
     itemType: entity
-    iconUrl: https://pbs.twimg.com/media/Bt_pEfqCAAAiVyz.png
+    iconUrl: classpath://io.brooklyn.clocker.kubernetes:icons/kubernetes.png
     item:
       type: kubernetes-worker
 
@@ -738,7 +740,7 @@ brooklyn.catalog:
     description: |
       A software process running a Kubernetes service daemon
     itemType: entity
-    iconUrl: https://pbs.twimg.com/media/Bt_pEfqCAAAiVyz.png
+    iconUrl: classpath://io.brooklyn.clocker.kubernetes:icons/kubernetes.png
     item:
       type: child-software-process
 
@@ -790,6 +792,7 @@ brooklyn.catalog:
     describtion: |
       The Kubernetes proxy service
     itemType: entity
+    iconUrl: classpath://io.brooklyn.clocker.kubernetes:icons/kubernetes.png
     item:
       type: kubernetes-service
 
@@ -817,6 +820,7 @@ brooklyn.catalog:
     describtion: |
       The Kubernetes Kubelet service
     itemType: entity
+    iconUrl: classpath://io.brooklyn.clocker.kubernetes:icons/kubernetes.png
     item:
       type: kubernetes-service
 
@@ -906,6 +910,7 @@ brooklyn.catalog:
     describtion: |
       The Kubernetes API server service
     itemType: entity
+    iconUrl: classpath://io.brooklyn.clocker.kubernetes:icons/kubernetes.png
     item:
       type: kubernetes-service
 
@@ -963,6 +968,7 @@ brooklyn.catalog:
     describtion: |
       The Kubernetes controller-manager service
     itemType: entity
+    iconUrl: classpath://io.brooklyn.clocker.kubernetes:icons/kubernetes.png
     item:
       type: kubernetes-service
 
@@ -997,6 +1003,7 @@ brooklyn.catalog:
     describtion: |
       The Kubernetes scheduler service
     itemType: entity
+    iconUrl: classpath://io.brooklyn.clocker.kubernetes:icons/kubernetes.png
     item:
       type: kubernetes-service
 

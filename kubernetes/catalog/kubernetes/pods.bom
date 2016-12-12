@@ -11,7 +11,7 @@ brooklyn.catalog:
     description: |
       A Kubernetes YAML pod deployment
     itemType: entity
-    iconUrl: https://pbs.twimg.com/media/Bt_pEfqCAAAiVyz.png
+    iconUrl: classpath://io.brooklyn.clocker.kubernetes:icons/kubernetes.png
     item:
       type: child-software-process
 
@@ -123,6 +123,7 @@ brooklyn.catalog:
     description: |
       KubeDNS service pod
     itemType: entity
+    iconUrl: classpath://io.brooklyn.clocker.kubernetes:icons/kubernetes.png
     item:
       type: kubernetes-pod
 
@@ -141,6 +142,7 @@ brooklyn.catalog:
     description: |
       Kubernetes dashboard UI service pod
     itemType: entity
+    iconUrl: classpath://io.brooklyn.clocker.kubernetes:icons/kubernetes.png
     item:
       type: kubernetes-pod
 
@@ -156,6 +158,7 @@ brooklyn.catalog:
     description: |
       Calico policy controller pod
     itemType: entity
+    iconUrl: classpath://io.brooklyn.clocker.kubernetes:icons/calico.png
     item:
       type: kubernetes-pod
 
@@ -172,7 +175,8 @@ brooklyn.catalog:
     description: |
       Prometheus monitoring service pod
     itemType: entity
-    iconUrl: https://avatars1.githubusercontent.com/u/3380462
+    iconUrl:
+    iconUrl: classpath://io.brooklyn.clocker.kubernetes:icons/prometheus.png
     item:
       type: kubernetes-pod
 
